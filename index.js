@@ -37,31 +37,65 @@ class App extends Component {
           });
         }
       )
-  }
+      fetch("https://dataserverdaw.herokuapp.com/escritores/frases")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            frases: result.frases
+          });
+        },
 
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+  activateLasers(){
+    console.log("clic")
+  }
+ /* createTable = (idc) => {
+    const { error, isLoaded,escritores } = this.state;
+    const str="";
+    {this.frases.map(f =>{
+      if(idc==={f.texto}.toString){
+         str.append({f.texto})
+      }
+
+    })
+    }
+    console.log(str)
+  }*/
   
   render() {
     const { error, isLoaded,escritores } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div>Cargando...</div>;
     } else {
       return (
-        <ul class='nav nav-tabs' role="tablist">
+        <div class='row' id="accordion">
           {escritores.map(f => (
-            <li  class='nav-item'>
-              <a class='nav-link' data-toggle="tab" role="tab" href="#prueba-">
-                {f.nombre}
-              </a>
-              <div id="s">njng
-              </div> 
-            </li>
+            <div  class='card col-lg-2 mr-2 mb-1 laclass'>
+              <div class='card-header' >
+                <a class='card-link' data-toggle='collapse' href={f.id}  onclick="activateLasers()">
+                  {f.nombre} 
+                </a>
+                
+              </div>
+              <div id={f.id} class='collapse' data-parent='#accordion'>njng
+                </div> 
+            </div>
             
           ))}
-        </ul>
+        </div>
         
-      );console.log(cnt);
+      )
     }
   }
 }
