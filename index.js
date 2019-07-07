@@ -15,7 +15,7 @@ class App extends Component {
       error: null,
       isLoaded: false,
       escritores: [],
-      frases: []
+      frases: [],
     };
   }
 
@@ -53,7 +53,9 @@ class App extends Component {
             <li  class='nav-item'>
               <a class='nav-link' data-toggle="tab" role="tab" href="#prueba-">
                 {f.nombre}
-              </a> 
+              </a>
+              <div id="s">njng
+              </div> 
             </li>
             
           ))}
