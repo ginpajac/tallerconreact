@@ -6,9 +6,6 @@ import Hello from './Hello';
 import taller from ".taller";
 
 import './style.css';
-function asignar(){
-
-}
 
 class App extends Component {
   constructor(props) {
