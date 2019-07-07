@@ -4,6 +4,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import { render } from 'react-dom';
 import Hello from './Hello';
 import taller from ".taller";
+
 import './style.css';
 function asignar(){
 
@@ -44,7 +45,6 @@ class App extends Component {
   
   render() {
     const { error, isLoaded,escritores } = this.state;
-    var cnt=0;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -54,13 +54,15 @@ class App extends Component {
         <ul class='nav nav-tabs' role="tablist">
           {escritores.map(f => (
             <li  class='nav-item'>
-              <a class='nav-link' data-toggle="tab" role="tab">
+              <a class='nav-link' data-toggle="tab" role="tab" href="#prueba-">
                 {f.nombre}
               </a> 
             </li>
+            
           ))}
         </ul>
-      );
+        
+      );console.log(cnt);
     }
   }
 }
